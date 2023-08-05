@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog pelis_G5 {% block titulo %}{% endblock titulo %} </title>
+</head>
+<body>
+    <div>
+    <a href="{%url 'home'%}">Home</a>
+    <a href="{% url 'noticias:listar' %}">Noticias</a>
+
+    {% if user.is_authenticated %}
+            <strong>Hola {{ user.username }}</strong>
+            <a href="{% url 'logout' %}">LOGOUT</a>
+        {% else %}
+            <a href="{% url 'login' %}">LOGIN</a>
+            <a href="{% url 'registro' %}">REGISTRO</a>
+        {% endif %}
+        
+    </div>
+    {% block contenido %}
+    
+    
+    {% endblock contenido %}
+</body>
+</html>
